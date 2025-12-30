@@ -29,7 +29,6 @@ class EditUser extends EditRecord
                 ->title(__("I campi password non corrispondono!"))
                 ->body(__("Verifica che la password e la sua conferma corrispondano."))
                 ->send();
-
             $this->halt();
         }
     }
