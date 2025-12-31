@@ -20,6 +20,9 @@ class IpsTable
                     ->sortable(),
                 TextColumn::make('address')
                     ->searchable(),
+                TextColumn::make('hostname')
+                    ->searchable()
+                    ->sortable(),
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()

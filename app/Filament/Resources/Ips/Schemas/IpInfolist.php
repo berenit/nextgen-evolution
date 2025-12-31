@@ -14,6 +14,7 @@ class IpInfolist
                 TextEntry::make('ip_class_id')
                     ->numeric(),
                 TextEntry::make('address'),
+                TextEntry::make('hostname'),
                 TextEntry::make('created_at')
                     ->dateTime()
                     ->placeholder('-'),

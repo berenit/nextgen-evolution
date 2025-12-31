@@ -22,6 +22,11 @@ class IpClassResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
 
+    public static function getNavigationLabel(): string
+    {
+        return __('Classi IP');
+    }
+
     public static function form(Schema $schema): Schema
     {
         return IpClassForm::configure($schema);

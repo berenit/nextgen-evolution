@@ -7,8 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class IpClass extends Model
 {
-    protected $fillable = ['cidr', 'label', 'vlan_id'];
 
     /** @use HasFactory<\Database\Factories\IpClassFactory> */
     use HasFactory;
+
+    protected $fillable = ['cidr', 'label', 'vlan_id'];
 }

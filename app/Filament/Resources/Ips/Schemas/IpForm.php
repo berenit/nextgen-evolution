@@ -17,6 +17,9 @@ class IpForm
                 TextInput::make('address')
                     ->required()
                     ->ip(),
+                TextInput::make('hostname')
+                    ->required()
+                    ->string(),
             ]);
     }
 }

@@ -20,7 +20,12 @@ class IpResource extends Resource
 {
     protected static ?string $model = Ip::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::QueueList;
+
+    public static function getNavigationLabel(): string
+    {
+        return __('Indirizzi IP');
+    }
 
     public static function form(Schema $schema): Schema
     {

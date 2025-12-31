@@ -22,6 +22,11 @@ class VlanResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
 
+    public static function getNavigationLabel(): string
+    {
+        return __('VLAN');
+    }
+
     public static function form(Schema $schema): Schema
     {
         return VlanForm::configure($schema);

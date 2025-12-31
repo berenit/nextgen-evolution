@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('ip_class_id')->constrained()->onDelete('cascade');
             $table->string('address')->unique(); // Es: 192.168.0.15
+            $table->string('hostname')->unique();
             $table->timestamps();
         });
     }

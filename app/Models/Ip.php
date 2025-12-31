@@ -13,5 +13,6 @@ class Ip extends Model
     protected $fillable = [
         'ip_class_id',
         'address',
+        'hostname'
     ];
 }

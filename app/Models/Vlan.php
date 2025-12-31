@@ -7,7 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Vlan extends Model
 {
-    protected $fillable = ['address'];
     /** @use HasFactory<\Database\Factories\VlanFactory> */
     use HasFactory;
+
+    protected $fillable = ['address'];
 }
