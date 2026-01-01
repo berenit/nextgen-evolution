@@ -13,6 +13,7 @@ class IpClassForm
             ->components([
                 TextInput::make('cidr')
                     ->required(),
+                    //->rules(['ipv4', 'regex:/^\d{1,3}(\.\d{1,3}){3}\/\d{1,2}$/']),
                 TextInput::make('label'),
                 TextInput::make('vlan_id')
                     ->required()

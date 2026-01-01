@@ -19,7 +19,8 @@ class IpForm
                     ->ip(),
                 TextInput::make('hostname')
                     ->required()
-                    ->string(),
+                    ->string()
+                    ->unique(table: 'ips'),
             ]);
     }
 }
