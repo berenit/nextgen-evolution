@@ -17,9 +17,10 @@ use Filament\Tables\Columns\IconColumn;
 
 class IpsTable
 {
-
-
-
+//    public function getHeading(): string
+//    {
+//        return 'Monitoraggio Matrice IP';
+//    }
     public static function configure(Table $table): Table
     {
         return $table
@@ -51,12 +52,11 @@ class IpsTable
             ])
             ->filters([
                     SelectFilter::make('ip_class_id')
-                        ->label('Classe IP')
+                        ->label(__('Classe IP'))
                         ->options(
-                            \App\Models\IpClass::all()->pluck('label', 'id')->toArray())
+                            \App\Models\IpClass::all()->sortBy('cidr')->pluck('label', 'id')->toArray())
                 ], layout: FiltersLayout::AboveContent)
 
-            ->paginated([64, 128,
-                200]); // Definisci quanti elementi per pagina
+            ->paginated([64, 128, 256]); // Definisci quanti elementi per pagina
     }
 }

@@ -1,0 +1,5 @@
+models:
+    Ip: { ip_class_id: integer, address: string, hostname: 'text nullable' }
+    IpClass: { cidr: string, label: 'string nullable', vlan_id: integer }
+    User: { name: string, email: string, email_verified_at: 'datetime nullable', password: string, remember_token: 'string nullable', two_factor_secret: 'text nullable', two_factor_recovery_codes: 'text nullable', two_factor_confirmed_at: 'datetime nullable' }
+    Vlan: { address: string }

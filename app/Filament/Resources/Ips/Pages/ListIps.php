@@ -9,11 +9,19 @@ use Filament\Resources\Pages\ListRecords;
 class ListIps extends ListRecords
 {
     protected static string $resource = IpResource::class;
+    public function getTitle(): string
+    {
+        return __("Elenco indirizzi IP");
+    }
 
+    public function getBreadcrumb(): string
+    {
+        return __("Elenco indirizzi IP");
+    }
     protected function getHeaderActions(): array
     {
         return [
-            CreateAction::make(),
+            // CreateAction::make(),
         ];
     }
 }

@@ -1,0 +1,31 @@
+models:
+  vLan:
+    vlan: integer
+    description: string
+
+  ipClass:
+    cidr: string
+    description: string
+    relationships:
+      belongsTo: Vlan
+
+  privateIp:
+    ip: string
+    description: string
+    macAddress: string
+    relationships:
+      belongsTo: IpClass
+      hasMany: Hostname
+
+  hostname:
+    name: string
+    relationships:
+      belongsTo: PrivateIp
+
+  publicIP:
+    ip: string
+    relationships:
+      hasMany: Hostname
+
+controllers:
+  # ...

@@ -20,9 +20,16 @@ class IpClassResource extends Resource
 {
     protected static ?string $model = IpClass::class;
 
+    protected static ?int $navigationSort = 2;
+
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
 
     public static function getNavigationLabel(): string
+    {
+        return __('Classi IP');
+    }
+
+    public static function getBreadcrumb(): string
     {
         return __('Classi IP');
     }

@@ -20,9 +20,16 @@ class VlanResource extends Resource
 {
     protected static ?string $model = Vlan::class;
 
+    protected static ?int $navigationSort = 4;
+
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
 
     public static function getNavigationLabel(): string
+    {
+        return __('VLAN');
+    }
+
+    public static function getBreadcrumb(): string
     {
         return __('VLAN');
     }

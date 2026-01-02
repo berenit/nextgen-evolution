@@ -10,6 +10,11 @@ class ListIpClasses extends ListRecords
 {
     protected static string $resource = IpClassResource::class;
 
+    public function getTitle(): string
+    {
+        return __("Elenco Classi IP");
+    }
+
     protected function getHeaderActions(): array
     {
         return [

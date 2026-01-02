@@ -22,7 +22,14 @@ class IpResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::QueueList;
 
+    protected static ?int $navigationSort = 1;
+
     public static function getNavigationLabel(): string
+    {
+        return __('Indirizzi IP');
+    }
+
+    public static function getBreadcrumb(): string
     {
         return __('Indirizzi IP');
     }
@@ -53,7 +60,7 @@ class IpResource extends Resource
     {
         return [
             'index' => ListIps::route('/'),
-            'create' => CreateIp::route('/create'),
+            // 'create' => CreateIp::route('/create'),
             'view' => ViewIp::route('/{record}'),
             'edit' => EditIp::route('/{record}/edit'),
         ];

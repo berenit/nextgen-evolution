@@ -5,7 +5,7 @@ namespace App\Filament\Resources\IpClasses\Pages;
 use App\Filament\Resources\IpClasses\IpClassResource;
 use Filament\Resources\Pages\CreateRecord;
 use App\Models\Ip;
-use Illuminate\Support\Facades\Concurrency;
+use Illuminate\Support\Facades\Log;
 
 class CreateIpClass extends CreateRecord
 {
@@ -13,9 +13,8 @@ class CreateIpClass extends CreateRecord
 
     protected function afterCreate(): void
     {
-        $record = $this->record;
-
         // Eseguiamo il calcolo in un processo separato per non rallentare l'utente
+        $record = $this->record;
 
         $this->generateAndStoreIps($record);
 
@@ -23,6 +22,12 @@ class CreateIpClass extends CreateRecord
 
     private function generateAndStoreIps($record): void
     {
+
+        Log::info('Generazione indirizzi IP avviata', [
+            'user_id' => auth()->id(),
+            'vlan' => $record->label,
+            'cidr' => $record->cidr,
+        ]);
 
         [$subnet, $mask] = explode('/', $record->cidr);
         $start = ip2long($subnet);
