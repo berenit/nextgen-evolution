@@ -2,9 +2,10 @@
 
 namespace Database\Factories;
 
+use App\Models\privateIp;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class VlanFactory extends Factory
+class HostnameFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -12,8 +13,8 @@ class VlanFactory extends Factory
     public function definition(): array
     {
         return [
-            'vlan' => fake()->numberBetween(-10000, 10000),
-            'description' => fake()->text(),
+            'name' => fake()->name(),
+            'private_ip_id' => privateIp::factory(),
         ];
     }
 }

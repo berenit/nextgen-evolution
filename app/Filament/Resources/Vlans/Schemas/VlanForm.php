@@ -11,8 +11,9 @@ class VlanForm
     {
         return $schema
             ->components([
-                TextInput::make('address')
+                TextInput::make('vlan')
                     ->required(),
+                TextInput::make('description'),
             ]);
     }
 }

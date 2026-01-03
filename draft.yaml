@@ -1,5 +1,5 @@
 models:
-  vLan:
+  vlan:
     vlan: integer
     description: string
 
@@ -22,7 +22,7 @@ models:
     relationships:
       belongsTo: PrivateIp
 
-  publicIP:
+  publicIp:
     ip: string
     relationships:
       hasMany: Hostname

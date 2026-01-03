@@ -9,7 +9,7 @@ use App\Filament\Resources\Ips\Pages\ViewIp;
 use App\Filament\Resources\Ips\Schemas\IpForm;
 use App\Filament\Resources\Ips\Schemas\IpInfolist;
 use App\Filament\Resources\Ips\Tables\IpsTable;
-use App\Models\Ip;
+use App\Models\PrivateIp;
 use BackedEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
@@ -18,7 +18,7 @@ use Filament\Tables\Table;
 
 class IpResource extends Resource
 {
-    protected static ?string $model = Ip::class;
+    protected static ?string $model = PrivateIp::class;
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::QueueList;
 
@@ -26,12 +26,12 @@ class IpResource extends Resource
 
     public static function getNavigationLabel(): string
     {
-        return __('Indirizzi IP');
+        return __('Indirizzi IP privati');
     }
 
     public static function getBreadcrumb(): string
     {
-        return __('Indirizzi IP');
+        return __('Indirizzi IP privati');
     }
 
     public static function form(Schema $schema): Schema

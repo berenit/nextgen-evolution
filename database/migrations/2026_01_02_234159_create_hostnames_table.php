@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('vlans', function (Blueprint $table) {
+        Schema::create('hostnames', function (Blueprint $table) {
             $table->id();
-
-            $table->string('address')->unique(); // Es: 192.168.0.15
+            $table->string('name');
+            $table->foreignId('private_ip_id')->constrained()->onDelete('cascade');;
             $table->timestamps();
         });
     }
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('vlans');
+        Schema::dropIfExists('hostnames');
     }
 };

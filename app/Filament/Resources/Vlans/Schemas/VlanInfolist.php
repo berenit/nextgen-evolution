@@ -11,7 +11,8 @@ class VlanInfolist
     {
         return $schema
             ->components([
-                TextEntry::make('address'),
+                TextEntry::make('vlan'),
+                TextEntry::make('description'),
                 TextEntry::make('created_at')
                     ->dateTime()
                     ->placeholder('-'),

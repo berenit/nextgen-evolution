@@ -4,8 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Vlan extends Model
+class PublicIP extends Model
 {
     use HasFactory;
 
@@ -15,8 +16,7 @@ class Vlan extends Model
      * @var array
      */
     protected $fillable = [
-        'vlan',
-        'description',
+        'ip',
     ];
 
     /**
@@ -29,5 +29,10 @@ class Vlan extends Model
         return [
             'id' => 'integer',
         ];
+    }
+
+    public function hostnames(): HasMany
+    {
+        return $this->hasMany(Hostname::class);
     }
 }

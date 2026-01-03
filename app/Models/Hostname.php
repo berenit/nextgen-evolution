@@ -4,8 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Vlan extends Model
+class Hostname extends Model
 {
     use HasFactory;
 
@@ -15,8 +16,8 @@ class Vlan extends Model
      * @var array
      */
     protected $fillable = [
-        'vlan',
-        'description',
+        'name',
+        'private_ip_id',
     ];
 
     /**
@@ -28,6 +29,12 @@ class Vlan extends Model
     {
         return [
             'id' => 'integer',
+            'private_ip_id' => 'integer',
         ];
+    }
+
+    public function PrivateIp(): BelongsTo
+    {
+        return $this->belongsTo(PrivateIp::class);
     }
 }

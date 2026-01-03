@@ -1,5 +1,28 @@
+created:
+    - database/factories/VlanFactory.php
+    - database/factories/IpClassFactory.php
+    - database/factories/PrivateIpFactory.php
+    - database/factories/HostnameFactory.php
+    - database/factories/PublicIpFactory.php
+    - database/migrations/2026_01_02_234156_create_vlans_table.php
+    - database/migrations/2026_01_02_234157_create_ip_classes_table.php
+    - database/migrations/2026_01_02_234158_create_private_ips_table.php
+    - database/migrations/2026_01_02_234159_create_hostnames_table.php
+    - database/migrations/2026_01_02_234200_create_public_ips_table.php
+    - app/Models/vlan.php
+    - app/Models/ipClass.php
+    - app/Models/privateIp.php
+    - app/Models/hostname.php
+    - app/Models/publicIp.php
 models:
     Ip: { ip_class_id: integer, address: string, hostname: 'text nullable' }
     IpClass: { cidr: string, label: 'string nullable', vlan_id: integer }
     User: { name: string, email: string, email_verified_at: 'datetime nullable', password: string, remember_token: 'string nullable', two_factor_secret: 'text nullable', two_factor_recovery_codes: 'text nullable', two_factor_confirmed_at: 'datetime nullable' }
     Vlan: { address: string }
+    vLan: { vlan: integer, description: string }
+    ipClass: { cidr: string, description: string, relationships: { belongsTo: Vlan } }
+    privateIp: { ip: string, description: string, macAddress: string, relationships: { belongsTo: IpClass, hasMany: Hostname } }
+    hostname: { name: string, relationships: { belongsTo: PrivateIp } }
+    publicIP: { ip: string, relationships: { hasMany: Hostname } }
+    publicIp: { ip: string, relationships: { hasMany: Hostname } }
+    vlan: { vlan: integer, description: string }

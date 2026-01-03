@@ -17,10 +17,6 @@ use Filament\Tables\Columns\IconColumn;
 
 class IpsTable
 {
-//    public function getHeading(): string
-//    {
-//        return 'Monitoraggio Matrice IP';
-//    }
     public static function configure(Table $table): Table
     {
         return $table
@@ -43,7 +39,7 @@ class IpsTable
 //                                    hover:bg-primary-50 transition-colors border border-gray-100 rounded-xl',
 //                        ]),
 
-                    Tables\Columns\TextColumn::make('address')
+                    Tables\Columns\TextColumn::make('ip')
                         ->size('xs')
                         ->weight('bold')
                         ->alignment('center')
@@ -54,7 +50,7 @@ class IpsTable
                     SelectFilter::make('ip_class_id')
                         ->label(__('Classe IP'))
                         ->options(
-                            \App\Models\IpClass::all()->sortBy('cidr')->pluck('label', 'id')->toArray())
+                            \App\Models\IpClass::all()->sortBy('cidr')->pluck('description', 'id')->toArray())
                 ], layout: FiltersLayout::AboveContent)
 
             ->paginated([64, 128, 256]); // Definisci quanti elementi per pagina

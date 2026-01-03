@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('ip_classes', function (Blueprint $table) {
             $table->id();
-            $table->string('cidr')->unique(); // Es: 192.168.0.0/24
-            $table->string('label')->nullable();
-            $table->foreignId('vlan_id')->constrained()->onDelete('cascade');
+            $table->string('cidr');
+            $table->string('description');
+            $table->foreignId('vlan_id')->constrained()->onDelete('cascade');;
             $table->timestamps();
         });
     }

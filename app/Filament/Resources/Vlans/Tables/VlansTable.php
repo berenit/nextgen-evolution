@@ -15,8 +15,12 @@ class VlansTable
     {
         return $table
             ->columns([
-                TextColumn::make('address')
-                    ->searchable(),
+                TextColumn::make('vlan')
+                    ->searchable()
+                    ->sortable(),
+                TextColumn::make('description')
+                    ->searchable()
+                    ->sortable(),
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()

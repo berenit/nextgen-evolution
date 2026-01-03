@@ -11,11 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('ips', function (Blueprint $table) {
+        Schema::create('private_ips', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('ip_class_id')->constrained()->onDelete('cascade');
-            $table->string('address')->unique(); // Es: 192.168.0.15
-            $table->string('hostname')->unique()->nullable();
+            $table->string('ip');
+            $table->string('description');
+            $table->string('macAddress');
+            $table->foreignId('ip_class_id')->constrained()->onDelete('cascade');;
             $table->timestamps();
         });
     }
@@ -25,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('ips');
+        Schema::dropIfExists('private_ips');
     }
 };
