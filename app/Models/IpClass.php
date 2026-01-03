@@ -2,14 +2,25 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class IpClass extends Model
 {
+    // Forza il nome della tabella se non segue lo standard pluralizzato
+    protected $table = 'ip_classes';
 
-    /** @use HasFactory<\Database\Factories\IpClassFactory> */
-    use HasFactory;
+    // Se la tua chiave primaria non si chiama 'id'
+    protected $primaryKey = 'id';
 
-    protected $fillable = ['cidr', 'label', 'vlan_id'];
+    protected $fillable = [
+        'cidr',
+        'description',
+        'vlan_id',
+    ];
+
+    public function Vlan(): BelongsTo
+    {
+        return $this->belongsTo(Vlan::class);
+    }
 }
