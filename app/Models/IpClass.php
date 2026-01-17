@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+
+use Filament\Forms\Components\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
@@ -23,4 +25,5 @@ class IpClass extends Model
     {
         return $this->belongsTo(Vlan::class);
     }
+
 }

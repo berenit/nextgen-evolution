@@ -13,8 +13,9 @@ class IpInfolist
             ->components([
                 TextEntry::make('ip_class_id')
                     ->numeric(),
-                TextEntry::make('address'),
-                TextEntry::make('hostname'),
+                TextEntry::make('ip'),
+                TextEntry::make('description'),
+                TextEntry::make('macAddress'),
                 TextEntry::make('created_at')
                     ->dateTime()
                     ->placeholder('-'),

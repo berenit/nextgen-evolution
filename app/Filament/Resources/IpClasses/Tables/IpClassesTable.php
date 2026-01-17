@@ -18,8 +18,9 @@ class IpClassesTable
         return $table
             ->columns([
                 TextColumn::make('cidr')
-                    ->searchable(),
-                TextColumn::make('label')
+                    ->searchable()
+                    ->sortable(),
+                TextColumn::make('description')
                     ->searchable(),
                 TextColumn::make('vlan_id')
                     ->numeric()

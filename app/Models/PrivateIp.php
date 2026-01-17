@@ -2,10 +2,12 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+
 
 class PrivateIp extends Model
 {
@@ -44,5 +46,10 @@ class PrivateIp extends Model
     public function hostnames(): HasMany
     {
         return $this->hasMany(Hostname::class);
+    }
+
+    public function scopeOrderByIp(Builder $query, string $direction = 'asc'): Builder
+    {
+        return $query->orderByRaw("INET_ATON(ip) {$direction}");
     }
 }

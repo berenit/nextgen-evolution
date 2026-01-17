@@ -17,7 +17,7 @@ class IpClassForm
                     //->rules(['ipv4', 'regex:/^\d{1,3}(\.\d{1,3}){3}\/\d{1,2}$/']),
                 TextInput::make('description'),
                 Select::make('vlan_id') // Il campo sulla tua tabella IP
-                    ->label('Classe di Rete')
+                    ->label('VLAN')
                     ->relationship('Vlan', 'vlan') // 1. Nome relazione nel Model, 2. Colonna da mostrare
                     ->searchable() // Rende il campo ricercabile (consigliato)
                     ->preload()    // Carica le opzioni all'apertura (ottimo per liste non enormi)

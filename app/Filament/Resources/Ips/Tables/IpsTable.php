@@ -6,6 +6,7 @@ use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Actions\ViewAction;
+use Filament\Forms\Components\Builder;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Enums\FiltersLayout;
 use Filament\Tables\Filters\Filter;
@@ -43,7 +44,11 @@ class IpsTable
                         ->size('xs')
                         ->weight('bold')
                         ->alignment('center')
-                        ->color(fn ($record) => $record->hostname == null ? 'success' : 'danger')
+                        ->color(fn ($record) => $record->hostnames()->exists() || $record->macAddress !== null ? 'danger' : 'success' )
+                        ->action(EditAction::make())
+                        ->sortable(query: function ($query, $direction) {
+                            return $query->orderByIp($direction); // Richiama lo scope definito nel model
+                        })
                 ]),
             ])
             ->filters([
@@ -53,6 +58,7 @@ class IpsTable
                             \App\Models\IpClass::all()->sortBy('cidr')->pluck('description', 'id')->toArray())
                 ], layout: FiltersLayout::AboveContent)
 
-            ->paginated([64, 128, 256]); // Definisci quanti elementi per pagina
+            ->paginated([64, 128, 256])
+            ->defaultSort('ip'); // Definisci quanti elementi per pagina
     }
 }
